@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,
+    "solidity.packageDefaultDependenciesContractsDirectory": "",
+    "solidity.packageDefaultDependenciesDirectory": "smart_contract/node_modules",
+}
