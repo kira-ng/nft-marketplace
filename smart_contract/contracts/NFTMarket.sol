@@ -5,13 +5,15 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+import "hardhat/console.sol";
+
 contract NFTMarket is ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
 
     address payable owner;
-    uint256 listingPrice = 0.025 ether;
+    uint256 listingPrice = 0.001 ether;
 
     constructor() {
         owner = payable(msg.sender);
@@ -118,7 +120,7 @@ contract NFTMarket is ReentrancyGuard {
 
         for (uint256 i = 0; i < itemCount; i++) {
             if (idToMarketItem[i + 1].owner == address(0)) {
-                uint256 currentId = idToMarketItem[i + 1].itemId;
+                uint256 currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
@@ -135,7 +137,7 @@ contract NFTMarket is ReentrancyGuard {
         uint256 currentIndex = 0;
 
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i].owner == msg.sender) {
+            if (idToMarketItem[i + 1].owner == msg.sender) {
                 itemCount += 1;
             }
         }
@@ -159,7 +161,7 @@ contract NFTMarket is ReentrancyGuard {
         uint256 currentIndex = 0;
 
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i].seller == msg.sender) {
+            if (idToMarketItem[i + 1].seller == msg.sender) {
                 itemCount += 1;
             }
         }
