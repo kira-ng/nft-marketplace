@@ -4,6 +4,8 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 import { useRouter } from "next/router";
 import Web3Modal from "web3modal";
 
+import Loader from "../../components/Loader";
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 import { nftaddress, nftmarketaddress } from "../../config";
@@ -12,6 +14,7 @@ import NFT from "../../artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
 
 export default function CreateItem() {
+  const [loadingState, setLoadingState] = useState(false);
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
@@ -53,6 +56,7 @@ export default function CreateItem() {
   }
 
   async function createMarketItem(url) {
+    setLoadingState(true);
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -76,6 +80,7 @@ export default function CreateItem() {
       value: listingPrice,
     });
     await transaction.wait();
+    setLoadingState(false);
     router.push("/marketplace");
   }
 
@@ -136,18 +141,19 @@ export default function CreateItem() {
             </div>
           </div>
           {fileUrl && (
-            <>
-              <div className="w-full flex justify-center text-white my-4">
-                <img className="rounded" width="350" src={fileUrl} />
-              </div>
-              <button
-                onClick={handleCreateMarketItem}
-                className="font-bold mt-4 bg-pink-500 text-white rounded p-3 shadow-lg"
-              >
-                Create Digital Asset
-              </button>
-            </>
+            <div className="w-full flex justify-center text-white my-4">
+              <img className="rounded" width="350" src={fileUrl} />
+            </div>
           )}
+          {fileUrl && !loadingState && (
+            <button
+              onClick={handleCreateMarketItem}
+              className="font-bold mt-4 bg-pink-500 text-white rounded p-3 shadow-lg"
+            >
+              Create Digital Asset
+            </button>
+          )}
+          {loadingState && <Loader />}
         </div>
       </div>
     </div>

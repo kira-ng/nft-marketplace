@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import meotwo from "../assets/150.png";
 import meo from "../assets/151.png";
@@ -34,8 +35,12 @@ const Hero = () => {
               The world&apos;s first and largest NFT marketplace
             </div>
             <div className={style.ctaContainer}>
-              <button className={style.accentedButton}>Explore</button>
-              <button className={style.button}>Create</button>
+              <Link href="/marketplace">
+                <div className={style.accentedButton}>Marketplace</div>
+              </Link>
+              <Link href="/assets-create">
+                <div className={style.button}>Create</div>
+              </Link>
             </div>
           </div>
           <div className={style.cardContainer}>
