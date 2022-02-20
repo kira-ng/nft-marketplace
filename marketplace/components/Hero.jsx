@@ -6,7 +6,7 @@ import meo from "../assets/151.png";
 
 const style = {
   wrapper: `relative`,
-  container: `before:content-[''] before:bg-red-300 before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('../assets/150.png')] before:bg-cover before:bg-center before:opacity-30 before:blur`,
+  container: `before:content-[''] before:bg-red-300 before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:bg-[url('../assets/bg.png')] before:bg-cover before:bg-center before:opacity-30 before:blur`,
   contentWrapper: `flex h-screen relative justify-center flex-wrap items-center`,
   copyContainer: `w-1/2`,
   title: `relative text-white text-[46px] font-semibold`,
@@ -39,7 +39,7 @@ const Hero = () => {
             </div>
           </div>
           <div className={style.cardContainer}>
-            <Image src={meotwo} className="rounded-t-lg"></Image>
+            <Image src={meotwo} className="rounded-t-lg drop-shadow-xl"></Image>
             <div className={style.infoContainer}>
               <Image
                 src={meo}

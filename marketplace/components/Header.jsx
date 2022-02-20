@@ -10,11 +10,11 @@ import logo from "../assets/logo.png";
 
 const style = {
   wrapper: `w-screen flex bg-[#04111d] px-[1.2rem] py-[0.8rem]`,
-  logoContainer: `flex items-center cursor-pointer`,
-  searchBar: `flex flex-1 mx-[0.8rem] w-max-[520px] items-center bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c]`,
+  logoContainer: `flex items-center cursor-pointer w-[150px]`,
+  searchBar: `flex flex-1 mx-[0.8rem] max-w-[520px] items-center bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c]`,
   searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
   searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
-  headerItems: `flex items-center justify-end`,
+  headerItems: `flex flex-1 items-center justify-end`,
   headerItem: `text-white px-4 font-bold text-[#c8cacd] hover:text-white cursor-pointer`,
   headerIcon: `text-[#8a939b] text-3xl font-black px-4 hover:text-white cursor-pointer`,
 };
@@ -39,17 +39,18 @@ const Header = () => {
       </div>
 
       <div className={style.headerItems}>
-        <Link href="/">
-          <div className={style.headerItem}> Explore </div>
+        <Link href="/marketplace">
+          <div className={style.headerItem}> Marketplace </div>
         </Link>
-        <Link href="/create-item">
-          <div className={style.headerItem}> Sell NFT </div>
+        <Link href="/assets-create">
+          <div className={style.headerItem}> Create NFT </div>
         </Link>
 
-        <Link href="/create">
-          <div className={style.headerItem}> Create </div>
-        </Link>
         <Link href="/my-assets">
+          <div className={style.headerItem}> My Assets </div>
+        </Link>
+
+        <Link href="/collections">
           <div className={style.headerIcon}>
             <CgProfile />
           </div>
