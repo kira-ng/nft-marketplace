@@ -11,6 +11,7 @@ import logo from "../assets/logo.png";
 const style = {
   wrapper: `w-screen flex bg-[#04111d] px-[1.2rem] py-[0.8rem]`,
   logoContainer: `flex items-center cursor-pointer w-[150px]`,
+  logoText: ` ml-[0.8rem] text-white font-semibold text-2xl`,
   searchBar: `flex flex-1 mx-[0.8rem] max-w-[520px] items-center bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c]`,
   searchIcon: `text-[#8a939b] mx-3 font-bold text-lg`,
   searchInput: `h-[2.6rem] w-full border-0 bg-transparent outline-0 ring-0 px-2 pl-0 text-[#e6e8eb] placeholder:text-[#8a939b]`,
@@ -24,7 +25,8 @@ const Header = () => {
     <div className={style.wrapper}>
       <Link href="/">
         <div className={style.logoContainer}>
-          <Image src={logo} height={40} width={104}></Image>
+          <Image src={logo} height={40} width={39}></Image>
+          <div className={style.logoText}>kiraNg</div>
         </div>
       </Link>
 
